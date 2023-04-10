@@ -24,9 +24,13 @@ class FTServerClient {
 public:
     FTServerClient();
     ~FTServerClient();
-
+    int request_file();
+    void get_response();
 private:
-    /* data */
+    int fd;
+    int filefd;
+    struct Request req;
+    struct Response resp;
 };
 
 
