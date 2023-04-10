@@ -3,7 +3,7 @@
 FTServerClient::FTServerClient() {
     struct sockaddr_in serv_addr;
     memset(&serv_addr, 0, sizeof(serv_addr));
-    serv_addr.sin_port = htons(8080);
+    serv_addr.sin_port = htons(8888);
     serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
     serv_addr.sin_family = AF_INET;
 
