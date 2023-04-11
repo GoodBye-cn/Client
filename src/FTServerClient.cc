@@ -48,24 +48,24 @@ void FTServerClient::get_response() {
             readBytes += recv(fd, buf + readBytes, sizeof(buf) - readBytes, 0);
             if (readBytes > sizeof(Response)) {
                 memcpy(&resp, buf, sizeof(Response));
-                printf("len: %d", resp.length);
-                data = new char[resp.length];
+                printf("len: %d", resp.size);
+                data = new char[resp.size];
                 // data = buf + sizeof(Response);
                 memcpy(data, buf + headSize, readBytes - headSize);
                 recvData = true;
                 continue;
             }
         }
-        ret = recv(fd, data + readBytes - headSize, resp.length + headSize - readBytes, 0);
+        ret = recv(fd, data + readBytes - headSize, resp.size + headSize - readBytes, 0);
         if (ret <= 0) {
             break;
         }
         readBytes += ret;
         // 传输完成
-        if (readBytes == headSize + resp.length) {
+        if (readBytes == headSize + resp.size) {
             int writeBytes = 0;
-            while (writeBytes < resp.length) {
-                writeBytes += write(filefd, data + writeBytes, resp.length - writeBytes);
+            while (writeBytes < resp.size) {
+                writeBytes += write(filefd, data + writeBytes, resp.size - writeBytes);
             }
             close(filefd);
             break;

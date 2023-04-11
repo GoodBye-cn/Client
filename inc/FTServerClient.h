@@ -10,13 +10,15 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+#define PATHLEN 1024
+
 struct Request {
     int length;
-    char path[256];
+    char path[PATHLEN];
 };
 
 struct Response {
-    int length;
+    int size;
     char end[4];
 };
 
