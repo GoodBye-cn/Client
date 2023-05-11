@@ -1,9 +1,8 @@
 #include <iostream>
-#include "FTServerClient.h"
+#include "FTClient.h"
 
 int main(int, char**) {
     std::cout << "Hello, world!\n";
-    FTServerClient client;
-    client.request_file();
-    client.get_response();
+    FTClient client;
+    client.run();
 }
