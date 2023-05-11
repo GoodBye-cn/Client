@@ -25,10 +25,12 @@ class FTClient {
 public:
     FTClient();
     ~FTClient();
-    // 一次链接一个请求
+    // 测试一次连接一个请求
     void run();
-    // 多次连接一个请求
+    // 测试一次连接多个请求
     void run(int num);
+    // 使用多线程测试多次连接一次请求
+    void multy_connect_run(int num);
 private:
     void set_network();
     void set_file_request(const char* file_path);
