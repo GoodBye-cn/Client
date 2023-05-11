@@ -21,6 +21,7 @@ void FTClient::run() {
     }
 
     // 设置文件部分
+    remove(write_file_path);
     filefd = open(write_file_path, O_WRONLY | O_CREAT);
     if (filefd == -1) {
         printf("open file error\n");
@@ -50,7 +51,7 @@ void FTClient::run() {
                 printf("server disconnect\n");
                 break;
             }
-            
+
             if (bytes < 0) {
                 printf("read head error\n");
                 break;
@@ -68,6 +69,10 @@ void FTClient::run() {
             continue;
         }
         bytes = read(sockfd, file_buff + read_bytes, response.size - read_bytes);
+        if (bytes == 0) {
+            printf("server disconnect\n");
+            break;
+        }
         if (bytes < 0) {
             printf("read file error\n");
             break;

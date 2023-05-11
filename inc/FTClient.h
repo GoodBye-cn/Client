@@ -29,7 +29,7 @@ public:
 private:
     const char* ip = "127.0.0.1";
     const char* request_file_path = "/mnt/e/resource/src/springboot-vue-demo.zip";
-    const char* write_file_path = "/mnt/e/resource/dest/demo2.zip";
+    const char* write_file_path = "/mnt/e/resource/dest/demo4.zip";
     int port = 8888;
     struct sockaddr_in serv_addr;
     int sockfd, filefd;
