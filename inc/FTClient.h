@@ -25,7 +25,15 @@ class FTClient {
 public:
     FTClient();
     ~FTClient();
+    // 一次链接一个请求
     void run();
+    // 多次连接一个请求
+    void run(int num);
+private:
+    void set_network();
+    void set_file_request(const char* file_path);
+    void recv_file_write();
+    void close_fd();
 private:
     const char* ip = "127.0.0.1";
     const char* request_file_path = "/mnt/e/resource/src/springboot-vue-demo.zip";

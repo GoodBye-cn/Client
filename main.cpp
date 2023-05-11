@@ -4,5 +4,5 @@
 int main(int, char**) {
     std::cout << "Hello, world!\n";
     FTClient client;
-    client.run();
+    client.run(7);
 }
